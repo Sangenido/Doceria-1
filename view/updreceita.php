@@ -36,10 +36,10 @@
       </div>      
       <div class="conteudo">
           <h2>Alteração de receitas</h2>
-          <form action="#" method="post">
+          <form action="../controller/receitaBO.php" method="post">
           <label>Nome:</label>
           <input type="text" name="txtnome"><br><br>
-          <input type="hidden" name="acao" value="inserir"/>
+          <input type="hidden" name="acao" value="alterar"/>
           <input type="submit" name="btnCadastrar" value="Alterar"/>
           <input type="reset" name="btnLimpar" value="Limpar"/>
         </form>

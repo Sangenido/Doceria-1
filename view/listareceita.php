@@ -40,17 +40,21 @@
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
-                            <th>Descrição</th>
+                            
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Dados da listagem -->
+                        <?php
+                include_once '../model/database/ReceitaDAO.php';
+                $dao = new ReceitaDAO();
+                $lista = $dao->list();
+                foreach ($lista as $value) {
+                 ?>
                         <tr>
-                            <td>1</td>
-                            <td>Receita 1</td>
-                            <td>Descrição da receita 1</td>
+                            <td><?php echo $value->idreceita;?></td>
+                            <td><?php echo $value->nome;?></td>
                             <td>
                                 <button name="btnalterar" onclick="location.href='updreceita.php'">Alterar</button>
                             </td>
@@ -58,9 +62,12 @@
                                 <button name="btnexcluir">Excluir</button>
                             </td>
                         </tr>
+                        <?php 
+                }
+                ?>
                     </tbody>
                 </table>
-                <button style="float: right" name="btncadingrediente" onclick="location.href='cadreceita.php'">Cadastrar</button>
+                <button style="float: right" name="btncadreceita" onclick="location.href='cadreceita.php'">Cadastrar</button>
             </div>
         </div>
         <div class="rodape">
