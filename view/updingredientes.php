@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./favicon.png" type="image/png">
   <title>Alteração - Doceria Dark Moon</title>
+    <?php
+        include_once '../model/Login.php';
+        Login::verificaSessao();
+    ?>  
   <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
@@ -20,36 +24,35 @@
       </div>
     </div>
     <div class="menu-horizontal">
-      <ul>
-          <li><a href="principal.php">Início</a></li>
-        <li><a href="#">Login</a></li>
-      </ul>
+        <?php
+            include_once 'menusuperior.php';
+        ?>
     </div>
     <div class="container">
       <div class="menu-lateral">
-        <ul>
-          <li><a href="listaingredientes.php">Ingredientes</a></li>
-          <li><a href="#">Receitas</a></li>
-          <li><a href="#">Sair</a></li>
-        </ul>
-      </div>      <div class="conteudo">
+        <?php
+          include_once './menu.php';
+        ?>
+      </div>      
+        <div class="conteudo">
+          <h2>Alteração de ingredientes</h2>
           <form action="../controller/ingredienteBO.php" method="post">
-              <?php 
-                  include_once '../model/database/IngredienteDAO.php';
-                  $dao = new IngredienteDAO();
-                  $id = $_GET['idingredientes'];
-                  $lista = $dao->list($id);
-                  foreach ($lista as $value){
-              ?>
+          <?php
+            include_once '../model/database/IngredienteDAO.php';
+            $dao = new IngredienteDAO();
+            $id = $_GET['idingredientes'];
+            $lista = $dao->list($id);
+            foreach ($lista as $value) {
+          ?>
           <label>Nome:</label>
-          <input type="text" name="txtnome" value="<?php echo $value->descricao; ?>"><br><br>
+          <input type="text" name="txtnome" value="<?php echo $value->descricao;?>"><br><br>
           <input type="hidden" name="acao" value="alterar"/>
-          <input type="hidden" name="idingredientes" value="<?php echo $value->idingredientes; ?>"/>
+          <input type="hidden" name="idingredientes" value="<?php echo $value->idingredientes;?>"/>
           <input type="submit" name="btnAlterar" value="Alterar"/>
           <input type="reset" name="btnLimpar" value="Limpar"/>
-          <?php
-                  }
-           ?>       
+        <?php 
+            }
+        ?>
         </form>
       </div>
     </div>

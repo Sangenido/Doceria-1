@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./favicon.png" type="image/png">
   <title>Cadastro - Doceria Dark Moon</title>
+    <?php
+        include_once '../model/Login.php';
+        Login::verificaSessao();
+    ?>  
   <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
@@ -20,20 +24,18 @@
       </div>
     </div>
     <div class="menu-horizontal">
-      <ul>
-          <li><a href="principal.php">Início</a></li>
-        <li><a href="#">Login</a></li>
-      </ul>
+        <?php
+            include_once 'menusuperior.php';
+        ?>
     </div>
     <div class="container">
       <div class="menu-lateral">
-        <ul>
-          <li><a href="listaingredientes.php">Ingredientes</a></li>
-          <li><a href="#">Receitas</a></li>
-          <li><a href="#">Sair</a></li>
-        </ul>
+        <?php
+          include_once './menu.php';
+        ?>
       </div>      
       <div class="conteudo">
+          <h2>Cadastro de ingredientes</h2>
           <form action="../controller/ingredienteBO.php" method="post">
           <label>Nome:</label>
           <input type="text" name="txtnome"><br><br>
