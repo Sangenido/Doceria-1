@@ -32,7 +32,7 @@ class IngredienteDAO {
         $query = "DELETE from ingredientes where idingredientes = :pid";
         $conn = DB::getInstancia()->prepare($query);
         $conn->execute(array(':pid'=>$id));
-        return $conn->rowcount()>0;
+        return $conn->rowCount()>0;
     }
 }
 ?>
