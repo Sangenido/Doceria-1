@@ -9,6 +9,13 @@
         include_once '../model/Login.php';
         Login::verificaSessao();
     ?>    
+    <script type="text/javascript">
+      function deletar(idreceita){
+          if(confirm('deseja excluir o registro?')){
+              document.location.href='../controller/receitaBO.php?acao=deletar&idreceita='+idreceita;
+          }
+      }
+  </script>
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
@@ -56,10 +63,10 @@
                             <td><?php echo $value->idreceita;?></td>
                             <td><?php echo $value->nome;?></td>
                             <td>
-                                <button name="btnalterar" onclick="location.href='updreceita.php'">Alterar</button>
+                                <button name="btnalterar" onclick="location.href='updreceita.php?idreceita=<?php echo $value->idreceita;?>'">Alterar</button>
                             </td>
                             <td>
-                                <button name="btnexcluir">Excluir</button>
+                                <button name="btnexcluir" onclick="javascript:deletar (<?php echo $value->idreceita;?>)">Excluir</button>
                             </td>
                         </tr>
                         <?php 

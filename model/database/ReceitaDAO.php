@@ -5,14 +5,14 @@ class ReceitaDAO {
     
     public function list ($id = null) {
         $where = ($id ? "where idreceita = $id":"");
-        $query = "SELECT * FROM Receita $where";
+        $query = "SELECT * FROM receita $where";
         $conn = DB::getInstancia()->query($query);
         $resultado = $conn->fetchAll();
             return $resultado;
     }
     
     public function insert(Receita $obj) {
-        $query = "INSERT INTO Receita (idreceita, nome) VALUES (null,:nome)";
+        $query = "INSERT INTO receita (idreceita, nome) VALUES (null,:nome)";
         $conn = DB::getInstancia()->prepare($query);
         $conn->execute(array(':nome'=>$obj->nome));
           return $conn->rowCount()>0;          
